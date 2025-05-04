@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo
+    container_name: container-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+  backend:
+    build: .
+    container_name: container-backend
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb+srv://yagosantos:BO4nGkqwggihuxo8@cluster0testdatabase.an5rpra.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0TestDatabase
+      - JWT_SECRET=63f93943c8f68cac0dba2da0c0a9f96cdb5e36cca8f3198a936e62f33be82116
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    restart: unless-stopped
+
+volumes:
+  mongo-data:
+    driver: local
