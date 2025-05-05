@@ -1,9 +1,6 @@
 // register.js
 import connectDB from '../../utils/db.js';
 import User from '../../models/user.js';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
