@@ -1,16 +1,49 @@
-# Auth Backend App
 
-## Tecnologias
-- Node.js
-- Express
-- MongoDB (Mongoose)
-- JWT
-- Podman ou Docker opcional
+# Backend Express + MongoDB com JWT
 
-## Como usar
-```bash
-npm install
-cp .env.example .env
-docker-compose up
-npm run dev
+Este é um backend simples com autenticação de usuários usando Node.js, Express, MongoDB e JWT, pronto para ser hospedado na Vercel como funções serverless.
+
+---
+
+## 🚀 Tecnologias
+
+- Node.js  
+- Express  
+- MongoDB + Mongoose  
+- JWT (`jsonwebtoken`)  
+- Bcrypt  
+- Vercel (Serverless Functions)
+
+---
+
+## 📁 Estrutura
+
 ```
+├── api
+│ ├── auth
+│ │ ├── login.js
+│ │ ├── register.js
+│ │ └── profile.js
+│ └── protected.js
+├── middlewares
+│ └── authMiddleware.js
+├── models
+│ └── user.js
+├── requests
+├── services
+│ └── authService.js
+├── utils
+│ └── db.js
+├── .env
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── vercel.json
+└── README.md
+```
+
+---
+
+## 🎥 Vídeo de Demonstração
+
+![Assista ao vídeo](https://youtu.be/uNIwXgBCNqw)
