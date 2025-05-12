@@ -46,4 +46,4 @@ Este é um backend simples com autenticação de usuários usando Node.js, Expre
 
 ## 🎥 Vídeo de Demonstração
 
-![Assista ao vídeo](https://youtu.be/uNIwXgBCNqw)
+https://youtu.be/uNIwXgBCNqw
