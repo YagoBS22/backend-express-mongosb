@@ -18,7 +18,6 @@ Este é um backend simples com autenticação de usuários usando Node.js, Expre
 
 ## 📁 Estrutura
 
-```
 ├── api/\
 │ │ ├── controllers/\
 │	│ ├── authController.js\
@@ -40,7 +39,6 @@ Este é um backend simples com autenticação de usuários usando Node.js, Expre
 ├── node_modules/\
 ├──	package.json\
 └── README.md
-```
 
 ---
 
