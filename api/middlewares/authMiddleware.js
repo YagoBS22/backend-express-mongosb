@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
-import connectDB from '../utils/db.js';
+import connectDB from '../database/db.js';
 
 const authMiddleware = (handler) => async (req, res) => {
   const authHeader = req.headers.authorization;

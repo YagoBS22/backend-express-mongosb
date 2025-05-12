@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
-import connectDB from '../utils/db.js';
+import connectDB from '../database/db.js';
 
 export async function loginUser(email, password) {
   await connectDB();
