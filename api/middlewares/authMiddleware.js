@@ -2,11 +2,11 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 import connectDB from '../database/db.js';
 
-const authMiddleware = (handler) => async (req, res) => {
+const authMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'No token provided' });
+    return res.status(401).json({ message: 'No token provided.' });
   }
 
   const token = authHeader.split(' ')[1];
@@ -16,13 +16,21 @@ const authMiddleware = (handler) => async (req, res) => {
     await connectDB();
     const user = await User.findById(decoded.id).select('-password');
 
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) {
+      return res.status(401).json({ message: 'User associated with token not found.' });
+    }
 
     req.user = user;
-    return handler(req, res);
+    next();
+
   } catch (err) {
-    console.error(err);
-    return res.status(401).json({ message: 'Invalid token' });
+    if (err.name === 'JsonWebTokenError') {
+      return res.status(401).json({ message: 'Invalid token.', type: err.name });
+    } else if (err.name === 'TokenExpiredError') {
+      return res.status(401).json({ message: 'Token expired.', type: err.name });
+    }
+
+    return res.status(500).json({ message: 'Internal server error during authentication.' });
   }
 };
 

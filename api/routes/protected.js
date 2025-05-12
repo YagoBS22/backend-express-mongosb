@@ -1,8 +1,14 @@
-const express = require('express');
+import express from 'express';
+import protectedController from '../controllers/protectedController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
+
 const router = express.Router();
-const protectedController = require('../controllers/protectedController.js');
-const authMiddleware = require('../middlewares/authMiddleware.js');
 
-router.get('/', authMiddleware, protectedController.accessProtected);
+router.get('/',
+  authMiddleware,
+  (req, res, next) => {
+    return protectedController.accessProtected(req, res);
+  }
+);
 
-module.exports = router;
+export default router;
