@@ -19,27 +19,27 @@ Este é um backend simples com autenticação de usuários usando Node.js, Expre
 ## 📁 Estrutura
 
 ```
-├── api
-│ ├── auth
-│ │ ├── login.js
-│ │ ├── register.js
-│ │ └── profile.js
-│ └── protected.js
-├── middlewares
-│ └── authMiddleware.js
-├── models
-│ └── user.js
-├── requests
-├── services
-│ └── authService.js
-├── utils
-│ └── db.js
-├── .env
-├── .gitignore
-├── package.json
-├── package-lock.json
-├── vercel.json
-└── README.md
+├── api/
+│   ├── controllers
+│	│	├──	authController.js
+│	│	├──	profileController.js
+│	│	└── protectedController.js
+│	├── database
+│	│	└──	db.js
+│	├──	middlewares
+│	│	└──	authMiddleware.js
+│	├── models
+│	│	└──	user.js
+│	├── routes
+│	│	├──	auth.js
+│	│	├──	profile.js
+│	│	└──	protected.js
+│	├── services
+│	│	└──authService.js
+│	└── index.js
+├── node_modules/
+├──	package.json
+├── README.md
 ```
 
 ---
