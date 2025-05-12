@@ -4,14 +4,14 @@ import mongoose from 'mongoose';
 const todoSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, 'O título da tarefa é obrigatório.'],
+    required: [true, 'Task title is required.'],
     trim: true,
-    maxlength: [100, 'O título não pode exceder 100 caracteres.'],
+    maxlength: [100, 'Taks title cannot exceed 100 characters.'],
   },
   description: {
     type: String,
     trim: true,
-    maxlength: [500, 'A descrição não pode exceder 500 caracteres.'],
+    maxlength: [500, 'Task description cannot exceed 500 characters.'],
   },
   completed: {
     type: Boolean,

@@ -1,4 +1,3 @@
-// api/controllers/todoController.js
 import * as todoService from '../services/todoService.js';
 
 export const createTodoItem = async (req, res) => {

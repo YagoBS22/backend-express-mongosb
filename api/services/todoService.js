@@ -4,12 +4,12 @@ import connectDB from '../database/db.js';
 const checkOwnership = async (todoId, userId) => {
   const todo = await Todo.findById(todoId);
   if (!todo) {
-    const error = new Error('Tarefa não encontrada.');
+    const error = new Error('Task not found.');
     error.statusCode = 404;
     throw error;
   }
   if (todo.user.toString() !== userId.toString()) {
-    const error = new Error('Acesso não autorizado a esta tarefa.');
+    const error = new Error('Unauthorized access to this task.');
     error.statusCode = 403;
     throw error;
   }
@@ -21,7 +21,7 @@ export const createTodo = async (userId, todoData) => {
   const { title, description } = todoData;
 
   if (!title || title.trim() === '') {
-    const error = new Error('O título é obrigatório.');
+    const error = new Error('Title is required.');
     error.statusCode = 400;
     throw error;
   }
@@ -57,12 +57,12 @@ export const updateTodo = async (userId, todoId, updateData) => {
   const { title, description, completed } = updateData;
 
   if (typeof title === 'undefined' || typeof description === 'undefined' || typeof completed === 'undefined') {
-      const error = new Error('Para PUT, todos os campos (title, description, completed) devem ser fornecidos.');
+      const error = new Error('For PUT, all fields (title, description, completed) are required.');
       error.statusCode = 400;
       throw error;
   }
    if (!title || title.trim() === '') {
-    const error = new Error('O título é obrigatório.');
+    const error = new Error('Title is required.');
     error.statusCode = 400;
     throw error;
   }
@@ -83,7 +83,7 @@ export const patchTodo = async (userId, todoId, patchData) => {
 
   if (typeof patchData.title !== 'undefined') {
     if (patchData.title.trim() === '') {
-        const error = new Error('O título não pode ser vazio se fornecido para atualização.');
+        const error = new Error('Title is required.');
         error.statusCode = 400;
         throw error;
     }
@@ -107,10 +107,10 @@ export const deleteTodo = async (userId, todoId) => {
 
   const deletedTodo = await Todo.findByIdAndDelete(todoId); 
   if (!deletedTodo) {
-      const error = new Error('Tarefa não encontrada para deletar.');
+      const error = new Error('Task not found.');
       error.statusCode = 404;
       throw error;
   }
   console.log(`[TodoService] Tarefa deletada: ${deletedTodo.title} (ID: ${deletedTodo._id}) pelo usuário ${userId}`);
-  return { message: 'Tarefa deletada com sucesso.' };
+  return { message: 'Task deleted succesfully!' };
 };
