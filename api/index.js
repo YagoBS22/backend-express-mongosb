@@ -12,6 +12,14 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Welcome to the To-Do list API!',
+    status: 'API online.',
+    documentation_hint: 'Access the specifc endpoints(/todos, /auth/login, etc.)',
+  });
+});
+
 app.use((err, req, res, next) => {
   if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
     return res.status(400).json({
