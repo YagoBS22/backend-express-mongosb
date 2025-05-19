@@ -1,4 +1,3 @@
-// api/models/todo.js
 import mongoose from 'mongoose';
 
 const todoSchema = new mongoose.Schema({
@@ -27,7 +26,7 @@ const todoSchema = new mongoose.Schema({
   timestamps: true,
 });
 
-todoSchema.pre('save', function(next) {
+todoSchema.pre('save', function (next) {
   if (!this.isNew) {
     this.updatedAt = Date.now();
   }

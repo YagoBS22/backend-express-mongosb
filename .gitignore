@@ -4,3 +4,4 @@ temp_credentials.txt
 temp_jwt_token.txt
 temp_last_todo_id.txt
 .vercel/
+.vercel

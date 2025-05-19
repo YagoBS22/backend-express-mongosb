@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo!</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bem-vindo à Aplicação de Lista de Tarefas</h1>
+        <div id="loadingIndicator" class="loading-indicator">Carregando...</div>
+        <p>Verificando seu status de login...</p>
+    </div>
+
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            showLoading();
+            if (isLoggedIn()) {
+                redirectToTodos();
+            } else {
+                redirectToLogin();
+            }
+        });
+    </script>
+</body>
+
+</html>

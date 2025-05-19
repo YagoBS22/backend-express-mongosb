@@ -16,8 +16,8 @@ const authController = {
       res.json({ token });
     } catch (err) {
       res.status(401).json({ error: err.message });
-      }
-   }
+    }
+  }
 }
 
 export default authController;
